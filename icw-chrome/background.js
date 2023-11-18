@@ -16,7 +16,7 @@ async function getIcwSettings() {
         console.log(`Error Retreiving Settings: ${error}`);
     }
 
-    let getting = chrome.storage.sync.get(["address","secure"]);
+    let getting = chrome.storage.sync.get(["address","secure", "port"]);
     console.log(getting)
 
     let res = await getting

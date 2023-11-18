@@ -20,7 +20,7 @@ function restoreOptions() {
         console.log(`Error: ${error}`);
     }
 
-    let getting = chrome.storage.sync.get(["address","secure"]);
+    let getting = chrome.storage.sync.get(["address","secure", "port"]);
     getting.then(setCurrentChoice, onError);
 }
 
