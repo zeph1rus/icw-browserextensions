@@ -16,7 +16,7 @@ function restoreOptions() {
         document.querySelector("#icwport").value = result.port || 5000;
     }
 
-    function onError(errobr) {
+    function onError(error) {
         console.log(`Error: ${error}`);
     }
 
