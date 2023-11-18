@@ -1,0 +1,40 @@
+body {
+    min-width: 400px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border-width: 2px;
+    border-style: solid;
+    border-color: gainsboro;
+    border-radius: 4px;
+    font-family: Verdana, sans-serif;
+}
+
+label {
+    font-family: Verdana, sans-serif;
+}
+
+.checkbox {
+    padding: 12px 20px;
+}
+
+.button {
+  background-color: dimgrey;
+  border: none;
+  color: white;
+  margin-outside: 4px;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  width: 50%;
+}
+
+.button:active {
+    background-color: cadetblue;
+}

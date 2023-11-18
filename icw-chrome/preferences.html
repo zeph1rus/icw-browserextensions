@@ -1,0 +1,24 @@
+<!doctype html>
+<link rel="stylesheet" href="style.css">
+<html lang="en">
+  <head>
+    <title>ICW Settings Page</title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+  <div>
+    <img src="icons/icw_logo_48.png" alt="ICW Logo - Grey">
+  </div>
+  <div>
+    <form>
+      <label>ICW Host Address <input type="text" id="icwaddress" name="icwaddress" /></label>
+      <label>ICW Port <input type="text" id="icwport" name="icwport" /></label>
+      <label>Use HTTPS? <input class="checkbox" type="checkbox" id="icwsecure" name="icwsecure" /></label><br />
+      <button class="button" type="submit">Save</button>
+    </form>
+  </div>
+  <div id="icwmessage"></div>
+    <script src="options.js"></script>
+  </body>
+</html>
