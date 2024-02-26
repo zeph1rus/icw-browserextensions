@@ -2,24 +2,20 @@ function onError (error) {
   console.log(error)
 }
 
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.contextMenus.create({
-    id: 'icw-put',
-    title: 'Push to ICW',
-    contexts: ['image']
-  })
-  chrome.contextMenus.create({
-    id: 'icw-remote',
-    title: 'Push to ICW Remote Queue',
-    contexts: ['image']
-  })
+// created at top level because this refuses to re-run from event page
+// even though it should be fine when run from runtime.OnInstalled
+browser.menus.create({
+  id: 'icw-put',
+  title: 'Push to ICW',
+  contexts: ['image']
+})
+browser.menus.create({
+  id: 'icw-remote',
+  title: 'Push to ICW Remote Queue',
+  contexts: ['image']
 })
 
 async function getIcwSettings () {
-  function onError (error) {
-    console.log(`Error Retreiving Settings: ${error}`)
-  }
-
   const getting = browser.storage.sync.get(['address', 'secure', 'port', 'remoteurl', 'remotekey'])
   console.log('Retrieving settings')
 
@@ -43,7 +39,7 @@ async function getIcwAddress () {
   }
 }
 
-chrome.contextMenus.onClicked.addListener(async (info, tab) => {
+browser.menus.onClicked.addListener(async (info, tab) => {
   const url = await getIcwAddress()
   console.log(`onClicked Triggered I: ${info}, T: ${tab}`)
   const icon_url = chrome.runtime.getURL('icons/icw_logo_48.png')
@@ -105,6 +101,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     switch (menuId) {
       case 'icw-put': {
         console.log('parsing response from icw-put')
+
         const content = await response.json()
         if (content.status === 'success') {
           await chrome.notifications.create(null, {
@@ -122,6 +119,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
             iconUrl: icon_url
           })
         }
+
         break
       }
       case 'icw-remote': {
