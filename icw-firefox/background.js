@@ -4,16 +4,7 @@ function onError (error) {
 
 // created at top level because this refuses to re-run from event page
 // even though it should be fine when run from runtime.OnInstalled
-browser.menus.create({
-  id: 'icw-put',
-  title: 'Push to ICW',
-  contexts: ['image']
-})
-browser.menus.create({
-  id: 'icw-remote',
-  title: 'Push to ICW Remote Queue',
-  contexts: ['image']
-})
+
 
 async function getIcwSettings () {
   const getting = browser.storage.sync.get(['address', 'secure', 'port', 'remoteurl', 'remotekey'])
@@ -161,4 +152,15 @@ browser.menus.onClicked.addListener(async (info, tab) => {
     }
     )
   }
+})
+
+browser.menus.create({
+  id: 'icw-put',
+  title: 'Push to ICW',
+  contexts: ['image']
+})
+browser.menus.create({
+  id: 'icw-remote',
+  title: 'Push to ICW Remote Queue',
+  contexts: ['image']
 })
